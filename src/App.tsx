@@ -71,16 +71,21 @@ const Row = styled.div`
 position: relative
 height: ${KEYBOX_DEFAULT_SIZE}
 `
-
+const getLetter = (xs: (string | [string]), i: number) => {
+  if (typeof xs === "string") {
+    return xs.charAt(i);
+  }
+  return xs[i];
+}
 
 const makeKeyBox = (left: number, keytop: string, color: string) => {
   return (
     <KeyBox left={left} color={color}>
-      <JaLeft>{keytop.charAt(0)}</JaLeft>
-      <JaRight>{keytop.charAt(1)}</JaRight>
-      <JaBase>{keytop.charAt(2)}</JaBase>
-      <EnShift><EnSpan>{keytop.charAt(3)}</EnSpan></EnShift>
-      <EnBase><EnSpan>{keytop.charAt(4)}</EnSpan></EnBase>
+      <JaLeft>{getLetter(keytop, 0)}</JaLeft>
+      <JaRight>{getLetter(keytop, 1)}</JaRight>
+      <JaBase>{getLetter(keytop, 2)}</JaBase>
+      <EnShift><EnSpan>{getLetter(keytop, 3)}</EnSpan></EnShift>
+      <EnBase><EnSpan>{getLetter(keytop, 4)}</EnSpan></EnBase>
     </KeyBox>
   );
 }
