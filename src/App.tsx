@@ -144,6 +144,7 @@ const App: React.FC = () => {
           {originalRowDataString}
         </textarea>
       </div>
+      <a href="https://scrapbox.io/nishio/keylayout">see https://scrapbox.io/nishio/keylayout</a>
     </div >
   );
 }
