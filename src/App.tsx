@@ -187,7 +187,7 @@ const defaultRowData = [
 
 const App: React.FC = () => {
   const [rowData, setRowData] = useState(defaultRowData);
-
+  const [error, setError] = useState("ok");
   const offsets = [0, 30, 60, 90];
 
   const rows = rowData.map((x: string[], i: number) =>
@@ -195,7 +195,14 @@ const App: React.FC = () => {
   );
   const onChange = (e: any) => {
     console.log(e.target.value);
-    setRowData(JSON.parse(e.target.value));
+    let d;
+    try {
+      d = JSON.parse(e.target.value);
+      setRowData(d);
+      setError("ok");
+    } catch {
+      setError("error");
+    }
   };
 
   return (
@@ -213,6 +220,7 @@ const App: React.FC = () => {
         >
           {originalRowDataString}
         </textarea>
+        {error}
       </div>
       <a href="https://scrapbox.io/nishio/keylayout">
         see https://scrapbox.io/nishio/keylayout
